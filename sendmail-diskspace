@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SMTPFROM=username@gmail.com
+SMPTTO=username@gmail.com
+SMPTSERVER=smtp.googlemail.com:587
+SMTPUSER=username@gmail.com
+SMTPPASSWORD="PASSWORD"
+SUBJECT="Disk space"
+
+df -h > /tmp/diskusage.txt
+
+sendemail -f $SMTPFROM -t $SMPTTO -u $SUBJECT -o message-file=/tmp/diskusage.txt  -s $SMPTSERVER -xu $SMTPUSER -xp $SMTPPASSWORD
+
+rm /tmp/diskusage.txt
