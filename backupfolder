@@ -1,0 +1,8 @@
+#!/bin/bash
+
+rsync -zaP /home/USER/FOLDERNAME /pool1/backup/ > /tmp/"FOLDERNAME-$(date +%F)"
+echo "Nas" >> /tmp/"FOLDERNAME-$(date +%F)"
+tree -a /home/USERNAME/FOLDERNAME/ | grep directories >> /tmp/"FOLDERNAME-$(date +%F)"
+echo "Backup" >> /tmp/"FOLDERNAME-$(date +%F)"
+OUTPUT="$(tree -a /pool1/backup/FOLDERNAME | grep directories)"
+echo "${OUTPUT}"
