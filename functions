@@ -1,10 +1,15 @@
-function backup (){
+backup (){
     newname=$1.`date +%Y-%m-%d.%H%M.bak.tar`;
     tar -cvf $newname $1;
     echo "Backed up $1 to $newname.";
 }
 
-function numbfiles() {
+numbfiles() {
     N="$(ls $1 | wc -l)";
     echo "$N files in $1";
+}
+
+showpkg () {
+  apt-cache pkgnames | grep -i "$1" | sort
+  return;
 }
